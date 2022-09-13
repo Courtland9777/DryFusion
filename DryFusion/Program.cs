@@ -7,7 +7,7 @@ Console.WriteLine(File.Exists(file)
 
 file = @"football.dat";
 Console.WriteLine(File.Exists(file)
-    ? $"The team with the minimum span is {GetMinSpan(File.ReadLines(file, Encoding.UTF8).Skip(1).Take(17).Skip(1).Take(3), 6, 8, 1)}"
+    ? $"The team with the minimum span is {GetMinSpan(File.ReadLines(file, Encoding.UTF8).Skip(1).Where(x => !x.Contains("---")), 6, 8, 1)}"
     : "{file} doesn't exist.");
 
 static (int, string) GetSpanValue(IReadOnlyList<string> line, int maxIndex, int minIndex, int valueIndex) =>
